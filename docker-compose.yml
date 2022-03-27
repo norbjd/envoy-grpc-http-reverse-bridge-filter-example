@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - ./helloworld.proto:/app/helloworld.proto
+
+  envoy:
+    image: envoyproxy/envoy:v1.21.0
+    ports:
+      - "50051:50051"
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
